@@ -1,4 +1,4 @@
-FROM php:apache
+FROM php:7-apache
 MAINTAINER Occitech <contact@occitech.fr>
 
 ENV N98_MAGERUN_URL https://files.magerun.net/n98-magerun.phar
@@ -18,7 +18,7 @@ RUN requirements="libpng12-dev libmcrypt-dev libmcrypt4 libcurl3-dev libfreetype
 
 RUN usermod -u 1000 www-data
 RUN a2enmod rewrite
-RUN sed -i -e 's/\/var\/www\/html/\/var\/www\/htdocs/' /etc/apache2/apache2.conf
+RUN sed -i -e 's/\/var\/www\/html/\/var\/www\/htdocs/' /etc/apache2/sites-available/000-default.conf
 
 WORKDIR /var/www/htdocs
 
