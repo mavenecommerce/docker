@@ -13,8 +13,11 @@ RUN requirements="libpng12-dev libmcrypt-dev libmcrypt4 libcurl3-dev libfreetype
     && docker-php-ext-install gd \
     && docker-php-ext-install mcrypt \
     && docker-php-ext-install mbstring \
+    && pecl install redis \
+    && docker-php-ext-enable redis \
     && requirementsToRemove="libpng12-dev libmcrypt-dev libcurl3-dev libpng12-dev libfreetype6-dev libjpeg62-turbo-dev" \
     && apt-get purge --auto-remove -y $requirementsToRemove
+
 
 RUN usermod -u 1000 www-data
 RUN a2enmod rewrite
